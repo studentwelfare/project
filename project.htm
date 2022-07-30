@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>Document</title>
+</head>
+<style>
+  *{
+    margin: 0;padding: 0;
+    overflow: hidden;
+  }
+  nav{
+    width: 100vw;
+    background-color: rgb(182, 255, 225);
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    box-shadow: 0px 5px 22px 3px black;
+  }
+  .comp-name{
+    font-size: x-large;
+    font-weight: 900;
+    padding: 0px 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    background-color: rgb(182, 255, 225);
+  }
+
+  .list{
+    padding: 10px;
+    background-color: rgb(182, 255, 225);
+
+    list-style: none;
+    display: flex;
+  }
+  li:hover{
+    border: 2px solid orange;
+    background-color: rgba(217, 202, 202, 0.6);
+    border-radius: 20%;
+
+  }
+
+  a{
+    font-size:medium;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    text-decoration: none;
+  margin: 20px;
+   
+  }
+  #principal{
+    height: 50vh;
+    width: 50vw;
+    background-color: rgb(220, 195, 165);
+    position:fixed;
+    left: 25%;
+    top: 20%;
+    text-align: center;
+    font-size: larger;
+    z-index: 1;
+    display: none;
+    box-shadow: 0px 0px 10px 10px black;
+    
+  }
+  #principal-top{
+    margin-bottom: 10px;
+    display: flex;
+    height: 20%;
+    width: 100%;
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ 
+  }
+  #principal span{
+    display: inline-block;
+   margin: 10px;
+  
+   color: white;
+   font-weight: 900;
+   background-color:rgb(12, 0, 0);
+    cursor: pointer;
+    border-radius: 20%;
+    padding: 10px;
+  }
+  #burger{
+display: none;
+  }
+  .bar-items{
+    height: 100vh;
+    box-sizing: border-box;
+    padding-top: 60px;
+    background-color: rgb(247, 237, 237);
+  }
+  #pg{
+    /* to make color green when password generator page is active */
+    color:red;
+    
+  }
+ #password-strength{
+  background-color: rgb(247, 237, 237);
+  display: none;
+ }
+ #contact{
+  background-color: blue;
+  display: none;
+ }
+ /* section start */
+ #pass-gen,#password-strength{
+  display: flex;
+  text-align: center;
+  font-weight: 900;
+  font-family: cursive;
+align-items: center;
+  flex-direction: column;
+ 
+ }
+ #passgen-main-cont,#password-strength-main-cont{
+  padding: 30px;
+  height: 60vh;
+  width: 60vw;
+  background-color: rgb(250, 252, 252);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+ }
+ #passgen-main-cont input{
+  width: 80%;
+ }
+ #passgen-main-cont span{
+  background-color: black;
+  padding:5px 15px;
+  border-radius: 20px;
+  color:white;
+  box-shadow: 0px 0px 3px 3px orange;
+ }
+ .generate{
+  margin: 10px;
+  background-color: rgb(193, 209, 223);
+  padding: 5px;
+  border-radius: 20%;
+cursor: pointer;
+ }
+ .pass-gen-passbox{
+
+  border: 3px solid black;
+  background-color: aquamarine;
+  border-radius: 20%;
+  padding: 10px;
+ }
+ .contain-button{
+  height: 10vh;
+  width: 70vw;
+  background-color: black;
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+border-radius: 20px;
+position: absolute;
+bottom: 0px;
+ }
+ .contain-button .fb,.contain-button .youtube,.contain-button .crypto{
+  height: 100%;
+  width: 20%;
+  margin: 0px 10px;
+ 
+ }
+ .contain-button .fb img,.contain-button .youtube img,.contain-button .crypto img{
+  height: 100%;
+  width: 80%;
+  cursor: pointer;
+ }
+
+  @media(max-width:1100px){
+    nav{
+      flex-direction: column;
+      background-color: rgb(96, 201, 157);
+      
+    }
+    .comp-name{
+      width: 100%;
+      background-color: rgb(96, 201, 157);
+      display: flex;
+      justify-content: space-around;
+      z-index: 1;
+    }
+    .comp-name:hover{
+    color: rgb(0, 0, 0);
+    }
+  .list{
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 40vh;
+    display: none;
+   overflow: scroll;
+  }
+  .list li{
+    box-shadow: 0px 0px 10px 2px red;
+    padding: 5px;
+    background-color: rgb(235, 222, 222,0.7);
+  }
+    #burger{
+      display: block;
+      font-size:1.5em;
+      font-weight: 900;
+    }
+    #principal{
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      top: 0;
+      left: 0;  
+   overflow: scroll;
+
+    }
+   #principal .text{
+    font-size: x-large;
+   }
+   /* section start */
+   #passgen-main-cont,.contain-button,#password-strength-main-cont{
+    width: 100vw;
+    
+   }
+
+  }
+  #check{
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 20%;
+    cursor: pointer;
+  }
+  #comment-check{
+    background-color: aquamarine;
+    padding: 15px;
+    border-radius:30px;
+  }
+  #checkbox-pass{
+    margin: 0px 10px;
+  }
+  #pass-check-input{
+    width: 40%;
+    padding: 20px;
+    border-radius: 20%;
+    background-color: rgb(224, 224, 225);
+  }
+  .casecheck{
+    color: red;
+  }
+</style>
+<body>
+<nav>
+  <div class="comp-name">
+    Secured-World
+    <div onclick="responsive_bar()"id="burger">
+      =
+    </div>
+  </div>
+  <div id="burger">
+  </div>
+  <div class="list">
+    <li><a  class='content-of-bar' onclick="main_fun(id)" id="pg" href="#">Password Generator</a></li>
+    <li><a class='content-of-bar' onclick="main_fun(id)" id='ps'href="#">Password Strength Checker</a></li>
+    <li><a title="Ctrl+q"class='content-of-bar' id='pn' onclick="principal()"href="#principal">Principal</a></li>
+    <li><a class='content-of-bar' onclick="main_fun(id)" id='cu' href="#">Contact Us</a></li>
+
+  </div>
+</nav>
+<div id="principal">
+  <div id="principal-top">
+<h1>Principal of this Website</h1>
+</div>
+  <div class="text">
+This Website is made for secure world and prevent the World from Hacking.This website ensure you 
+to Generate a strong Password and Check your Strength different Social medias Password. The main motive of this software is to 
+make Unhackable Password.<br>
+<span onclick="close_p()">Close</span>
+</div>
+</div>
+
+
+<section class="bar-items" id="pass-gen">
+  <h1>Password Generator</h1>
+  <div class="bar-item-main-cont" id="passgen-main-cont">
+    Length of password:
+   <input oninput="input_range(value)" type="range" min="4" max="15">
+   <span>10</span>
+   <div onclick="generate$p()"class="generate">Generate</div>
+
+   <div class="pass-gen-passbox">Password:</div>
+
+
+  </div>
+  <div class="contain-button">
+    <div class="fb">
+      <a href="https://www.facebook.com/dean.guy.5623" target="_blank">      <img  src="https://1000logos.net/wp-content/uploads/2021/04/Facebook-logo.png" alt="Facebook"></a>
+
+    </div>
+    <div class="youtube">
+      <a href="https://www.youtube.com/watch?v=Xj54HYuguSc" target="_blank">
+        
+<img src="data:image/jpeg;base64,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" alt="Youtube">
+   
+      </a>
+
+</div>
+    <div class="crypto">
+      <a href="https://samirbhandari2521.github.io/samir123/?fbclid=IwAR0qDvgRj7R3ZiRPh3-3afjGTx9zKH5Tds6lr9ug9i_rnfsFugxeBPPVkRk" target="_blank">
+        <img src="https://st2.depositphotos.com/1000393/6507/i/950/depositphotos_65076917-stock-photo-hacker-and-terrorism-fight.jpg" alt="cryptography">
+      </a>
+
+    </div>
+
+  </div>
+</section>
+<!-- passwordchecker -->
+<section class="bar-items" id="password-strength">
+  <h1>Password Checker
+  </h1>
+  <div class="bar-item-main-cont" id="password-strength-main-cont">
+    <input type="password"  placeholder="Enter your Password" id="pass-check-input">
+    <div class="qwerty">
+      <span>Show Password</span><input  type="checkbox" onclick="pass(checked)" id="checkbox-pass" >
+     
+    </div>
+    
+    <div id="check" onclick="check()">Check</div>
+    <div id="comment-check">Strength of your password is </div>
+ 
+  </div>
+  <div class="contain-button">
+    <div class="fb">
+      <a href="https://www.facebook.com/dean.guy.5623" target="_blank">      <img  src="https://1000logos.net/wp-content/uploads/2021/04/Facebook-logo.png" alt="Facebook"></a>
+
+    </div>
+    <div class="youtube">
+      <a href="https://www.youtube.com/watch?v=Xj54HYuguSc" target="_blank">
+        
+<img src="data:image/jpeg;base64,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" alt="Youtube">
+   
+      </a>
+
+</div>
+    <div class="crypto">
+      <a href="https://samirbhandari2521.github.io/samir123/?fbclid=IwAR0qDvgRj7R3ZiRPh3-3afjGTx9zKH5Tds6lr9ug9i_rnfsFugxeBPPVkRk" target="_blank">
+        <img src="https://st2.depositphotos.com/1000393/6507/i/950/depositphotos_65076917-stock-photo-hacker-and-terrorism-fight.jpg" alt="cryptography">
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="bar-items" id="contact">
+</section>
+
+  <script>
+  </script>
+  <script>
+    function principal(){
+      document.getElementById('principal').style.display='block';
+      document.getElementById('pn').style.color="red"
+      
+    }
+    function close_p(){
+      document.getElementById('principal').style.display='none';
+      document.getElementById('pn').style.color='black';
+    }
+    function responsive_bar(){
+      if(document.querySelector('.list').style.display=='flex'){
+        document.querySelector('.list').style.display='none'
+        //change color of hamurger
+        document.querySelector('#burger').style.color='black'
+        
+      }
+      else{
+        document.querySelector('.list').style.display='flex'
+        //change color of hamurger
+
+        document.querySelector('#burger').style.color='pink'
+        
+
+      }
+    }
+    function main_fun(idd){
+    
+      document.getElementById(idd).style.color='red';
+      var e=document.getElementsByClassName('content-of-bar');
+      for(i=0;i<4;i++){
+        if(e[i].id!=idd){
+          e[i].style.color='black';
+        }
+      }
+      for(i=0;i<3;i++){
+
+      }
+      
+
+      if(idd=='pg'){
+        
+        document.getElementById('password-strength').style.display='none';
+        document.getElementById('contact').style.display='none';
+        document.getElementById('pass-gen').style.display='flex';
+
+      }
+      else if(idd=='ps'){
+        document.getElementById('pass-gen').style.display='none';
+        document.getElementById('contact').style.display='none';
+        document.getElementById('password-strength').style.display='flex';
+
+      }
+      else if(idd=='cu'){
+        document.getElementById('pass-gen').style.display='none';
+        document.getElementById('password-strength').style.display='none';
+        document.getElementById('contact').style.display='flex';
+
+      }
+      else{
+
+      }
+
+
+    }
+    function input_range(a){
+      var c=document.querySelector('#passgen-main-cont');
+      c.querySelector('span').innerHTML="<b>"+a+"</b>"
+
+    }
+    function generate$p(){
+      var c=document.querySelector('#passgen-main-cont');
+      var d=c.querySelector('span').textContent;
+      var lengtth=parseInt(d);
+      var lowercase='abcdefghijklmnopqrstuvwxyz';
+      var uppercase='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var num='1234567890';
+      var sym='@#$%&*-_/';
+      var pass="";
+      for(i=0;i<lengtth;i++){
+          var lowerr=parseInt(Math.random()*24+1);
+          var upperr=parseInt(Math.random()*24+1);
+          var numr=parseInt(Math.random()*9+1);
+          var symr=parseInt(Math.random()*8+1);
+          var lowerp=lowercase[lowerr];
+          pass=pass+lowerp;
+          if(pass.length>=lengtth){
+            break;
+          }
+          var upperp=uppercase[upperr];
+          pass=pass+upperp;
+          if(pass.length>=lengtth){
+            break;
+          }
+          var symp=sym[symr];
+          pass=pass+symp;
+          if(pass.length>=lengtth){
+            break;
+          }
+          var nump=num[numr];
+          pass=pass+nump;
+          if(pass.length>=lengtth){
+            break;
+          }
+      }
+      document.querySelector('.pass-gen-passbox').textContent="Password:"+pass;
+    }
+setInterval(function(){
+  var color="";
+  var c=parseInt(Math.random()*10+1);
+  if(c==1){
+    color='red';
+  }
+  else if(c==2){
+    color='pink'
+  }
+  else if(c==3){
+    color='green'
+  }
+  else if(c==4){
+    color='yellow'
+  }
+  else if(c==5){
+    color='purple'
+  }
+else{
+
+}
+
+document.querySelector('.comp-name').style.color=color;
+},1000);
+
+
+window.addEventListener('keydown',()=>{
+  if(event.key=='q' && event.ctrlKey==true){
+      document.getElementById('principal').style.display='block';
+  }
+})
+function pass(w){
+  if(w==true){
+document.querySelector('#pass-check-input').type='text';
+  }
+  else{
+    document.querySelector('#pass-check-input').type='password';
+  }
+
+}
+function check(){
+  var s=0;
+  var n=0;
+  var l=0
+  var d=0;
+ var pass= document.querySelector('#pass-check-input').value;
+if(pass.length>5 && pass.length<=8){
+  d=1;
+}
+else if(pass.length>8){
+  d=2;
+}
+else{
+
+};
+ for(i=0;i<pass.length;i++){
+  if(pass[i]=='a' || pass[i]=='b'||pass[i]=='c'||pass[i]=='d' || pass[i]=='e'
+  ||pass[i]=='f'||pass[i]=='g' ||
+   pass[i]=='h'||pass[i]=='i'||pass[i]=='j' || pass[i]=='k'||pass[i]=='l'
+  ||pass[i]=='m' || pass[i]=='n'||pass[i]=='o'||pass[i]=='p' || pass[i]=='q'
+  ||pass[i]=='r'||pass[i]=='s' || pass[i]=='t'||pass[i]=='u'||
+  pass[i]=='v' || pass[i]=='w'||pass[i]=='x'||pass[i]=='y' || pass[i]=='z'){
+    l=1;
+   
+  }
+  
+  if(pass[i]=='1'||pass[i]=='2'||pass[i]=='3'||pass[i]=='4'||pass[i]=='5'||pass[i]=='6'||
+  pass[i]=='7'||pass[i]=='8'||pass[i]=='9'||pass[i]=='0'){
+n=1;
+
+  }
+  if(pass[i]=='!'||pass[i]=='@'||pass[i]=='#'||pass[i]=='$'||pass[i]=='%'||pass[i]=='^'||
+  pass[i]=='&'||pass[i]=='*'||pass[i]=='-'||pass[i]=='/'||pass[i]=='?'||pass[i]=='['||pass[i]==']'){
+s=1;
+  }
+ }
+ var tot=s+d+n+l;
+ console.log(tot)
+if(tot==5){
+  var stre='very Strong';
+  col='green'
+}
+else if(tot==4){
+  var stre='Strong';
+  col='yellowgreen';
+}
+else if(tot==3){
+  var stre='Medium';
+  col='yellow';
+}
+else if(tot==2){
+  var stre='Weak';
+  col='orange';
+}
+else if(tot==1){
+  var stre='Very Weak';
+  col='red';
+}
+else{};
+
+document.querySelector('#comment-check').textContent="Strength of your password is "+stre;
+document.querySelector('#comment-check').style.color=col;
+
+
+
+}
+
+  </script>
+</body>
+</html>
